@@ -4,7 +4,7 @@
 
 ### Added
 
-- feat: init
+- feat: initialize basic folder structure
 
 <!-- Links -->
 
