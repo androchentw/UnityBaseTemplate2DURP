@@ -15,8 +15,9 @@
 
 ## Folder Structure
 
-```text
+<img width="60%" alt="unity-sample-project-structure-markmap.png" src="Assets/Docs/res/unity-sample-project-structure-markmap.png"  />
 
+```text
 Assets/
 ├── Art/
 │   ├── Animations/
@@ -97,6 +98,80 @@ Assets/
 │   ├── Editor/
 │   ├── Runtime/
 ```
+
+<details>
+  <summary>Folder Structure Bullet Items</summary>
+- Assets
+  - Art
+    - Animations
+    - Fonts
+    - Materials
+    - Models
+    - Sprites
+    - Textures
+    - UI
+  - Audio
+    - Music
+    - SFX
+    - UI
+  - Docs
+  - Plugins
+    - Art
+    - Audio
+    - Editor
+  - Prefabs
+    - Characters
+    - Items
+    - UI
+  - Resources
+    - Json
+      - sample.json
+  - Scenes
+    - SampleScene.unity
+  - Scripts
+    - Core
+      - Enemies
+      - Interfaces
+      - Items
+      - Players
+      - ScriptableObjects
+        - DescriptionSo.cs
+    - Editor
+    - Events
+      - UIEvent.cs
+    - Managers
+      - Localization
+      - Monetization
+      - SettingsManager.cs
+    - Mvp
+      - Models
+      - Presenters
+      - Service
+      - Views
+    - UI
+      - Base
+        - UIManager.cs
+        - UIScreen.cs
+      - Screens
+        - MainScreen.cs
+        - SettingsScreen.cs
+      - ScriptableObjects
+        - MenuButtonSo.cs
+      - Utils
+        - TextStyle.cs
+    - Utils
+      - Coroutines.cs
+  - Settings
+  - Tests
+    - Editor
+    - Runtime
+  - UI
+    - UIToolkit
+    - Uss
+      - SampleUss.uss
+    - Uxml
+      - SampleScreen.uxml
+</details>
 
 ## Contribute
 
