@@ -8,8 +8,9 @@ Ref format: [DevToys](https://github.com/DevToys-app/DevToys/blob/main/THIRD-PAR
 
 ### Unity Asset Store
 
+- [Colourful Hierarchy Category GameObject](https://assetstore.unity.com/packages/tools/utilities/colourful-hierarchy-category-gameobject-205934)
 - [Fast Script Reload](https://assetstore.unity.com/packages/tools/utilities/fast-script-reload-239351)
-- [Colourful Hierarchy Category GameObject](https://assetstore.unity.com/packages/tools/utilities/colourful-hierarchy-category-gameobject-205934) 
+  - Not supported in Mac Silicon yet in v1.6.1
 
 ## Licenses
 
