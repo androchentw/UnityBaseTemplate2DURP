@@ -16,6 +16,7 @@
 ## Folder Structure
 
 ```text
+
 Assets/
 ├── Art/
 │   ├── Animations/
@@ -27,32 +28,70 @@ Assets/
 │   ├── UI/
 ├── Audio/
 │   ├── Music/
+│   ├── SFX/
 │   ├── UI/
 ├── Docs/
 ├── Plugins/
+│   ├── Art/
+│   ├── Audio/
+│   ├── Editor/
+│   │   ├── M Studio/
+│   │       ├── Colourful Hierarchy Category GameObject/
+│   ├── Runtime/
 ├── Prefabs/
 │   ├── Characters/
 │   ├── Items/
 │   ├── UI/
 ├── Resources/
+│   ├── Json/
+│       └── sample.json
 ├── Scenes/
+│   └── SampleScene.unity
 ├── Scripts/
 │   ├── Core/
 │   │   ├── Enemies/
 │   │   ├── Interfaces/
 │   │   ├── Items/
 │   │   ├── Players/
+│   │   ├── ScriptableObjects/
+│   │       └── DescriptionSo.cs
 │   ├── Editor/
+│   ├── Events/
+│   │   └── UIEvent.cs
 │   ├── Managers/
-│   │   ├── Monetization/
 │   │   ├── Localization/
+│   │   ├── Monetization/
+│   │   └── SettingsManager.cs
 │   ├── Mvp/
 │   │   ├── Models/
 │   │   ├── Presenters/
 │   │   ├── Services/
 │   │   ├── Views/
 │   ├── UI/
+│   │   ├── Base/
+│   │   │   ├── UIManager.cs
+│   │   │   └── UIScreen.cs
+│   │   ├── Screens/
+│   │   │   ├── MainScreen.cs
+│   │   │   └── SettingsScreen.cs
+│   │   ├── ScriptableObjects/
+│   │   │   └── MenuButtonSo.cs
+│   │   ├── Utils/
+│   │       └── TextStyles.cs
 │   ├── Utils/
+│       └── Coroutines.cs
+├── Settings/
+├── Tests/
+│   ├── Editor/
+│   ├── Runtime/
+├── UI/
+│   ├── UIToolkit/
+│   │   ├── Common/
+│   │   ├── UnityThemes/
+│   ├── Uss/
+│   │   └── SampleUss.uss
+│   ├── Uxml/
+│       └── SampleScreen.uxml
 ├── Settings/
 ├── Tests/
 │   ├── Editor/
