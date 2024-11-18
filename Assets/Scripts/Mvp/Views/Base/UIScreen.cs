@@ -1,4 +1,4 @@
-namespace UI.Base
+namespace Mvp.Views.Base
 {
     public abstract class UIScreen
     {

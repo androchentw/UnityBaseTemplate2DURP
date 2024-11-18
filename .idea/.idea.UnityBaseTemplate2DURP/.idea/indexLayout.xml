@@ -2,18 +2,7 @@
 <project version="4">
   <component name="UserContentModel">
     <attachedFolders />
-    <explicitIncludes>
-      <Path>.git/config</Path>
-      <Path>.github</Path>
-      <Path>.gitignore</Path>
-      <Path>Assets</Path>
-      <Path>CHANGELOG.md</Path>
-      <Path>CODE_OF_CONDUCT.md</Path>
-      <Path>CONTRIBUTING.md</Path>
-      <Path>LICENSE</Path>
-      <Path>README.md</Path>
-      <Path>SECURITY.md</Path>
-    </explicitIncludes>
+    <explicitIncludes />
     <explicitExcludes />
   </component>
 </project>

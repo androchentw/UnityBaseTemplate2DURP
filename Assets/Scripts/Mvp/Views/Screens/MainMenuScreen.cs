@@ -1,5 +1,5 @@
 using UnityEngine;
-namespace UI.Screens
+namespace Mvp.Views.Screens
 {
     public class MainScreen : MonoBehaviour
     {

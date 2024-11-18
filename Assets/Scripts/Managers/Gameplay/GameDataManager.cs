@@ -1,7 +1,7 @@
 using UnityEngine;
-namespace UI.Screens
+namespace Managers.Gameplay
 {
-    public class SettingsScreen : MonoBehaviour
+    public class GameDataManager : MonoBehaviour
     {
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()

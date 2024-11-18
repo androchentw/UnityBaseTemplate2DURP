@@ -1,7 +1,7 @@
 using UnityEngine;
-namespace UI.Base
+namespace Managers.Gameplay
 {
-    public class UIManager : MonoBehaviour
+    public class SaveManager : MonoBehaviour
     {
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()

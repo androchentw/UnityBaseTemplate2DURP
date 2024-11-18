@@ -1,5 +1,7 @@
 # Changelog
 
+## 
+
 ## [1.1.0] - 2024-11-09
 
 ### Added
@@ -22,4 +24,3 @@
 <!-- Versions -->
 [1.1.0]: https://github.com/androchentw/UnityBaseTemplate2DURP/releases/tag/v1.1.0
 [1.0.0]: https://github.com/androchentw/UnityBaseTemplate2DURP/releases/tag/v1.0.0
-
