@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      unity-sample-project-structure-markmap_0: 2831529309414320237
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
