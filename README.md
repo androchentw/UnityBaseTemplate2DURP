@@ -22,12 +22,11 @@ Ref
 - [2d-beginner-adventure-game](https://github.com/androchentw/unity-tutorial-projects/tree/main/2d-beginner-adventure-game/Assets/UnityTechnologies/Final/Scripts/Final)
 - [2d-game-kit](https://github.com/androchentw/unity-tutorial-projects/tree/main/2d-game-kit/Assets/2DGamekit/Scripts/Core)
 - dragon-crashers
-  - https://github.com/androchentw/unity-tutorial-projects/blob/main/dragon-crasashers/Assets/Prefabs/Managers
-  - https://github.com/androchentw/unity-tutorial-projects/tree/main/dragon-crashers/Assets/Resources/GameData/Skills
-  - https://github.com/androchentw/unity-tutorial-projects/blob/main/dragon-crashers/Assets/ScriptTemplates/81-C%23%20Script-NewBehaviourScript.cs.txt
-  - https://github.com/androchentw/unity-tutorial-projects/tree/main/dragon-crashers/Assets/Scripts/Gameplay/Data
-  - https://github.com/androchentw/unity-tutorial-projects/tree/main/dragon-crashers/Assets/Scripts/ScriptableObjects
-
+  - [Prefabs/Managers](https://github.com/androchentw/unity-tutorial-projects/blob/main/dragon-crasashers/Assets/Prefabs/Managers)
+  - [Resources/GameData/Skills](https://github.com/androchentw/unity-tutorial-projects/tree/main/dragon-crashers/Assets/Resources/GameData/Skills)
+  - [ScriptTemplates](https://github.com/androchentw/unity-tutorial-projects/blob/main/dragon-crashers/Assets/ScriptTemplates/81-C%23%20Script-NewBehaviourScript.cs.txt)
+  - [Scripts/Gameplay/Data](https://github.com/androchentw/unity-tutorial-projects/tree/main/dragon-crashers/Assets/Scripts/Gameplay/Data)
+  - [Scripts/ScriptableObjects](https://github.com/androchentw/unity-tutorial-projects/tree/main/dragon-crashers/Assets/Scripts/ScriptableObjects)
 
 ```text
 Assets/
