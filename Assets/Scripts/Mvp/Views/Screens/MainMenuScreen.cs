@@ -11,6 +11,7 @@ namespace Mvp.Views.Screens
     {
         // UI Elements
         private UIDocument _uiDocument;
+        private Label _clickedButtonInfo;
         private Button _newGameButton;
         private Button _loadGameButton;
         private Button _settingsButton;
@@ -41,11 +42,17 @@ namespace Mvp.Views.Screens
                 return;
             }
 
-            // Query all buttons from UXML
+            // Query UI elements from UXML
+            _clickedButtonInfo = rootElement.Q<Label>("clicked-button-info");
             _newGameButton = rootElement.Q<Button>("new-game-button");
             _loadGameButton = rootElement.Q<Button>("load-game-button");
             _settingsButton = rootElement.Q<Button>("settings-button");
             _quitButton = rootElement.Q<Button>("quit-button");
+            
+            if (_clickedButtonInfo == null)
+            {
+                FhLog.E("Clicked button info label not found in UXML.", this);
+            }
 
             // Register button click events
             RegisterButton(_newGameButton, OnNewGameClicked);
@@ -90,27 +97,43 @@ namespace Mvp.Views.Screens
 
         #region Button Click Handlers
 
+        private void UpdateClickedButtonInfo(string buttonId)
+        {
+            if (_clickedButtonInfo != null)
+            {
+                _clickedButtonInfo.text = $"Last clicked: {buttonId}";
+            }
+        }
+
         private void OnNewGameClicked(ClickEvent evt)
         {
-            FhLog.I("New Game button clicked.");
+            string buttonId = "new-game-button";
+            FhLog.I($"{buttonId} button clicked.");
+            UpdateClickedButtonInfo(buttonId);
             _presenter.OnNewGameClicked();
         }
 
         private void OnLoadGameClicked(ClickEvent evt)
         {
-            FhLog.I("Load Game button clicked.");
+            string buttonId = "load-game-button";
+            FhLog.I($"{buttonId} button clicked.");
+            UpdateClickedButtonInfo(buttonId);
             _presenter.OnLoadGameClicked();
         }
 
         private void OnSettingsClicked(ClickEvent evt)
         {
-            FhLog.I("Settings button clicked.");
+            string buttonId = "settings-button";
+            FhLog.I($"{buttonId} button clicked.");
+            UpdateClickedButtonInfo(buttonId);
             _presenter.OnSettingsClicked();
         }
 
         private void OnQuitClicked(ClickEvent evt)
         {
-            FhLog.I("Quit button clicked.");
+            string buttonId = "quit-button";
+            FhLog.I($"{buttonId} button clicked.");
+            UpdateClickedButtonInfo(buttonId);
             _presenter.OnQuitClicked();
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;

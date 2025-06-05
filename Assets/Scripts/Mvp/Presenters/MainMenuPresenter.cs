@@ -1,7 +1,6 @@
 using Mvp.Views.Screens;
 using Utils;
 
-
 namespace Mvp.Presenters
 {
     public class MainMenuPresenter : IMainMenuPresenter
@@ -28,8 +27,7 @@ namespace Mvp.Presenters
             FhLog.I("Starting new game...");
             _view.ShowMessage("Starting new game...");
             
-            // TODO: Implement new game logic here
-            // Example: SceneManager.LoadScene("GameScene");
+            // SceneManager.LoadScene("GameScene");
         }
 
 
@@ -39,8 +37,6 @@ namespace Mvp.Presenters
             
             FhLog.I("Loading saved game...");
             _view.ShowMessage("Loading saved game...");
-            
-            // TODO: Implement load game logic here
         }
 
         public void OnSettingsClicked()
@@ -49,8 +45,6 @@ namespace Mvp.Presenters
             
             FhLog.I("Opening settings...");
             _view.ShowMessage("Opening settings...");
-            
-            // TODO: Implement settings logic here
         }
 
         public void OnQuitClicked()

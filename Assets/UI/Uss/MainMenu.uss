@@ -29,7 +29,16 @@
 
 /* 按鈕被點擊時的樣式 (active 狀態) */
 .menu-button:active {
-    background-color: rgb(87, 174, 250); /* Even Darker Green */
-    /* 模擬按下的效果，稍微縮小按鈕 */
-    /*transform: scale(0.97);*/
+    background-color: rgb(87, 174, 250);
+}
+
+.clicked-button-info {
+    color: white;
+    font-size: 16px;
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(52, 73, 94, 0.8);
+    border-radius: 8px;
+    min-width: 250px;
 }
