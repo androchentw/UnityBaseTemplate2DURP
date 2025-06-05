@@ -112,6 +112,11 @@ namespace Mvp.Views.Screens
         {
             FhLog.I("Quit button clicked.");
             _presenter.OnQuitClicked();
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+#endif
         }
 
         #endregion

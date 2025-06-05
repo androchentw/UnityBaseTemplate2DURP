@@ -1,6 +1,6 @@
-using Mvp.Presenters;
 using Mvp.Views.Screens;
 using Utils;
+
 
 namespace Mvp.Presenters
 {
@@ -59,12 +59,6 @@ namespace Mvp.Presenters
             
             FhLog.I("Quitting application...");
             _view.ShowMessage("Quitting application...");
-            
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-#else
-            Application.Quit();
-#endif
         }
     }
 }
