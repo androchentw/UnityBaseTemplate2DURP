@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
-  m_Name: GameHome_ja-JP
+  m_Name: MainMenu_zh-TW
   m_EditorClassIdentifier: 
   m_LocaleId:
-    m_Code: ja-JP
+    m_Code: zh-TW
   m_SharedData: {fileID: 11400000, guid: 123d4425c7b74864caa93e0cf6a58939, type: 2}
   m_Metadata:
     m_Items: []
@@ -23,15 +23,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 421026328576
-    m_Localized: "\u30B2\u30FC\u30E0\u7D42\u4E86"
+    m_Localized: "\u96E2\u958B"
     m_Metadata:
       m_Items: []
   - m_Id: 3912935403520
-    m_Localized: "\u6700\u521D\u304B\u3089"
+    m_Localized: "\u65B0\u904A\u6232"
     m_Metadata:
       m_Items: []
   - m_Id: 4173821112320
-    m_Localized: "\u7D9A\u304D\u304B\u3089"
+    m_Localized: "\u7E7C\u7E8C\u904A\u6232"
     m_Metadata:
       m_Items: []
   references:

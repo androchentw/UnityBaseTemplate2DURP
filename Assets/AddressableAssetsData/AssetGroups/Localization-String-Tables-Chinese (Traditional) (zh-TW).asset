@@ -16,7 +16,7 @@ MonoBehaviour:
   m_GUID: 693c18ba36cf81046bab4581d0950ecb
   m_SerializeEntries:
   - m_GUID: 6931a6e8568bf2642a7091179a211183
-    m_Address: GameHome_zh-TW
+    m_Address: MainMenu_zh-TW
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-zh-TW

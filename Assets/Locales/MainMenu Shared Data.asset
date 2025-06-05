@@ -10,25 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
-  m_Name: GameHome Shared Data
+  m_Name: MainMenu Shared Data
   m_EditorClassIdentifier: 
-  m_TableCollectionName: GameHome
+  m_TableCollectionName: MainMenu
   m_TableCollectionNameGuidString: 123d4425c7b74864caa93e0cf6a58939
   m_Entries:
   - m_Id: 4173821112320
-    m_Key: GameHome.LoadGame
+    m_Key: MainMenu.LoadGame
     m_Metadata:
       m_Items: []
   - m_Id: 3912935403520
-    m_Key: GameHome.NewGame
+    m_Key: MainMenu.NewGame
     m_Metadata:
       m_Items: []
   - m_Id: 421026328576
-    m_Key: GameHome.Quit
+    m_Key: MainMenu.Quit
     m_Metadata:
       m_Items: []
   - m_Id: 389048954880
-    m_Key: GameHome.Settings
+    m_Key: MainMenu.Settings
     m_Metadata:
       m_Items: []
   m_Metadata:

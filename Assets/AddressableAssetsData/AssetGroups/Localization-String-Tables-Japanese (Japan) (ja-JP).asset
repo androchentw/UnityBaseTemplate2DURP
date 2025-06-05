@@ -16,7 +16,7 @@ MonoBehaviour:
   m_GUID: 5d7a789dcb9fff94c91ab701ecfa3c56
   m_SerializeEntries:
   - m_GUID: aac62475b0040554abb48a90b672cda5
-    m_Address: GameHome_ja-JP
+    m_Address: MainMenu_ja-JP
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-ja-JP
