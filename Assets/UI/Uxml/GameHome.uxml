@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements"
+         noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd"
+         editor-extension-mode="False">
+  <Style
+    src="project://database/Assets/UI/Uss/GameHome.uss?fileID=7433441132597879392&amp;guid=faaf1ce49bd1bbe44b47ebf1736d4344&amp;type=3#GameHome" />
+  <ui:VisualElement name="root" class="main-container">
+    <ui:VisualElement name="button-container" class="button-group">
+      <ui:Button name="play-button" text="Play" class="menu-button" />
+      <ui:Button name="settings-button" text="Settings" class="menu-button" />
+      <ui:Button name="quit-button" text="Quit" class="menu-button" />
+    </ui:VisualElement>
+  </ui:VisualElement>
+</ui:UXML>
