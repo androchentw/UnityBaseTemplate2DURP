@@ -1,9 +1,9 @@
+using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Utils;
 using Mvp.Presenters;
 
-// Move IMainMenuView interface to a separate file in the Mvp.Interfaces namespace
 namespace Mvp.Views.Screens
 {
     [RequireComponent(typeof(UIDocument))]
@@ -17,42 +17,57 @@ namespace Mvp.Views.Screens
         private Button _settingsButton;
         private Button _quitButton;
 
+        // Events
+        public event Action NewGameClicked;
+        public event Action LoadGameClicked;
+        public event Action SettingsClicked;
+        public event Action QuitClicked;
+
         // Presenter reference
         private IMainMenuPresenter _presenter;
 
         private void Awake()
         {
+            _uiDocument = GetComponent<UIDocument>();
+            
             // Initialize presenter (could be injected via DI in a real scenario)
             _presenter = new MainMenuPresenter(this);
         }
 
-        void OnEnable()
+        private void Start()
         {
-            _uiDocument = GetComponent<UIDocument>();
-            if (!_uiDocument)
+            if (!_uiDocument || _uiDocument.rootVisualElement == null)
             {
-                FhLog.E("此 GameObject 上找不到 UIDocument 組件。", this);
+                FhLog.E("UIDocument or rootVisualElement is not set.", this);
                 return;
             }
-
-            var rootElement = _uiDocument.rootVisualElement;
-            if (rootElement == null)
-            {
-                FhLog.E("UIDocument 中找不到 RootVisualElement。", this);
-                return;
-            }
-
-            // Query UI elements from UXML
-            _clickedButtonInfo = rootElement.Q<Label>("clicked-button-info");
-            _newGameButton = rootElement.Q<Button>("new-game-button");
-            _loadGameButton = rootElement.Q<Button>("load-game-button");
-            _settingsButton = rootElement.Q<Button>("settings-button");
-            _quitButton = rootElement.Q<Button>("quit-button");
             
-            if (_clickedButtonInfo == null)
+            Initialize(_uiDocument.rootVisualElement);
+            _presenter.Initialize();
+        }
+
+        private void OnDestroy()
+        {
+            if (_presenter is IDisposable disposable)
             {
-                FhLog.E("Clicked button info label not found in UXML.", this);
+                disposable.Dispose();
             }
+        }
+
+        public void Initialize(VisualElement root)
+        {
+            if (root == null)
+            {
+                FhLog.E("Root VisualElement is null.", this);
+                return;
+            }
+
+            // Query UI elements
+            _clickedButtonInfo = root.Q<Label>("clicked-button-info");
+            _newGameButton = root.Q<Button>("new-game-button");
+            _loadGameButton = root.Q<Button>("load-game-button");
+            _settingsButton = root.Q<Button>("settings-button");
+            _quitButton = root.Q<Button>("quit-button");
 
             // Register button click events
             RegisterButton(_newGameButton, OnNewGameClicked);
@@ -60,44 +75,28 @@ namespace Mvp.Views.Screens
             RegisterButton(_settingsButton, OnSettingsClicked);
             RegisterButton(_quitButton, OnQuitClicked);
 
-            // Notify presenter that view is ready
-            _presenter.OnViewReady();
+            // Initial UI state
+            UpdateClickedButtonInfo("None");
+            
+            FhLog.I($"{nameof(MainMenuScreen)} initialized");
         }
 
-        void OnDisable()
-        {
-            // Unregister all button click events
-            UnregisterButton(_newGameButton, OnNewGameClicked);
-            UnregisterButton(_loadGameButton, OnLoadGameClicked);
-            UnregisterButton(_settingsButton, OnSettingsClicked);
-            UnregisterButton(_quitButton, OnQuitClicked);
-        }
-
-        private void RegisterButton(Button button, EventCallback<ClickEvent> callback)
+        private void RegisterButton(Button button, Action<ClickEvent> clickHandler)
         {
             if (button != null)
             {
-                button.RegisterCallback(callback);
-                FhLog.I($"Button '{button.name}' event registered.");
+                button.clicked += () => clickHandler?.Invoke(null);
+                FhLog.I($"Button '{button.name}' registered.");
             }
             else
             {
-                FhLog.E($"Button not found in UXML.", this);
+                FhLog.E("Button not found in UXML.", this);
             }
         }
 
-        private void UnregisterButton(Button button, EventCallback<ClickEvent> callback)
-        {
-            if (button != null)
-            {
-                button.UnregisterCallback(callback);
-                FhLog.I($"Button '{button.name}' event unregistered.");
-            }
-        }
+        #region IMainMenuView Implementation
 
-        #region Button Click Handlers
-
-        private void UpdateClickedButtonInfo(string buttonId)
+        public void UpdateClickedButtonInfo(string buttonId)
         {
             if (_clickedButtonInfo != null)
             {
@@ -105,50 +104,40 @@ namespace Mvp.Views.Screens
             }
         }
 
-        private void OnNewGameClicked(ClickEvent evt)
+        public void ShowMessage(string message)
         {
-            string buttonId = "new-game-button";
-            FhLog.I($"{buttonId} button clicked.");
-            UpdateClickedButtonInfo(buttonId);
-            _presenter.OnNewGameClicked();
-        }
-
-        private void OnLoadGameClicked(ClickEvent evt)
-        {
-            string buttonId = "load-game-button";
-            FhLog.I($"{buttonId} button clicked.");
-            UpdateClickedButtonInfo(buttonId);
-            _presenter.OnLoadGameClicked();
-        }
-
-        private void OnSettingsClicked(ClickEvent evt)
-        {
-            string buttonId = "settings-button";
-            FhLog.I($"{buttonId} button clicked.");
-            UpdateClickedButtonInfo(buttonId);
-            _presenter.OnSettingsClicked();
-        }
-
-        private void OnQuitClicked(ClickEvent evt)
-        {
-            string buttonId = "quit-button";
-            FhLog.I($"{buttonId} button clicked.");
-            UpdateClickedButtonInfo(buttonId);
-            _presenter.OnQuitClicked();
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-#else
-            Application.Quit();
-#endif
+            // In a real app, you might show this in a toast or dialog
+            FhLog.I($"UI Message: {message}");
         }
 
         #endregion
 
-        // IMainMenuView implementation
-        public void ShowMessage(string message)
+        #region Button Click Handlers
+
+        private void OnNewGameClicked(ClickEvent evt)
         {
-            // Implement message display logic here
-            FhLog.I($"UI Message: {message}");
+            UpdateClickedButtonInfo("new-game-button");
+            NewGameClicked?.Invoke();
         }
+
+        private void OnLoadGameClicked(ClickEvent evt)
+        {
+            UpdateClickedButtonInfo("load-game-button");
+            LoadGameClicked?.Invoke();
+        }
+
+        private void OnSettingsClicked(ClickEvent evt)
+        {
+            UpdateClickedButtonInfo("settings-button");
+            SettingsClicked?.Invoke();
+        }
+
+        private void OnQuitClicked(ClickEvent evt)
+        {
+            UpdateClickedButtonInfo("quit-button");
+            QuitClicked?.Invoke();
+        }
+
+        #endregion
     }
 }

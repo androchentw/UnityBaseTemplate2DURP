@@ -1,4 +1,6 @@
+using System;
 using Mvp.Views.Screens;
+using UnityEngine;
 using Utils;
 
 namespace Mvp.Presenters
@@ -6,53 +8,88 @@ namespace Mvp.Presenters
     public class MainMenuPresenter : IMainMenuPresenter
     {
         private readonly IMainMenuView _view;
-        private bool _isViewReady;
+        private bool _isInitialized;
 
         public MainMenuPresenter(IMainMenuView view)
         {
-            _view = view;
-            FhLog.I("MainMenuPresenter initialized");
+            _view = view ?? throw new ArgumentNullException(nameof(view));
+            FhLog.I($"{nameof(MainMenuPresenter)} initialized");
         }
 
-        public void OnViewReady()
+        public void Initialize()
         {
-            _isViewReady = true;
-            FhLog.I("MainMenuView is ready");
+            if (_isInitialized) return;
+            
+            // Subscribe to view events
+            _view.NewGameClicked += OnNewGameClicked;
+            _view.LoadGameClicked += OnLoadGameClicked;
+            _view.SettingsClicked += OnSettingsClicked;
+            _view.QuitClicked += OnQuitClicked;
+            
+            _isInitialized = true;
+            FhLog.I($"{nameof(MainMenuPresenter)} initialized and ready");
         }
 
-        public void OnNewGameClicked()
+        public void StartNewGame()
         {
-            if (!_isViewReady) return;
+            if (!_isInitialized) return;
             
             FhLog.I("Starting new game...");
             _view.ShowMessage("Starting new game...");
-            
             // SceneManager.LoadScene("GameScene");
         }
 
-
-        public void OnLoadGameClicked()
+        public void LoadGame()
         {
-            if (!_isViewReady) return;
+            if (!_isInitialized) return;
             
             FhLog.I("Loading saved game...");
             _view.ShowMessage("Loading saved game...");
         }
 
-        public void OnSettingsClicked()
+        public void OpenSettings()
         {
-            if (!_isViewReady) return;
+            if (!_isInitialized) return;
             
             FhLog.I("Opening settings...");
             _view.ShowMessage("Opening settings...");
         }
 
-        public void OnQuitClicked()
+        public void QuitGame()
         {
-            if (!_isViewReady) return;
+            if (!_isInitialized) return;
             
             FhLog.I("Quitting application...");
             _view.ShowMessage("Quitting application...");
+            
+            #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+            #else
+                Application.Quit();
+            #endif
         }
+
+        public void Dispose()
+        {
+            if (!_isInitialized) return;
+            
+            // Unsubscribe from view events
+            _view.NewGameClicked -= OnNewGameClicked;
+            _view.LoadGameClicked -= OnLoadGameClicked;
+            _view.SettingsClicked -= OnSettingsClicked;
+            _view.QuitClicked -= OnQuitClicked;
+            
+            _isInitialized = false;
+            FhLog.I($"{nameof(MainMenuPresenter)} disposed");
+        }
+
+        #region Event Handlers
+        
+        private void OnNewGameClicked() => StartNewGame();
+        private void OnLoadGameClicked() => LoadGame();
+        private void OnSettingsClicked() => OpenSettings();
+        private void OnQuitClicked() => QuitGame();
+        
+        #endregion
     }
 }

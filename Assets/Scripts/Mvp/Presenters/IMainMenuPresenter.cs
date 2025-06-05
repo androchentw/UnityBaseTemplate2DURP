@@ -1,11 +1,15 @@
-﻿namespace Mvp.Presenters
+using System;
+namespace Mvp.Presenters
 {
-    public interface IMainMenuPresenter
+    public interface IMainMenuPresenter : IDisposable
     {
-        void OnViewReady();
-        void OnNewGameClicked();
-        void OnLoadGameClicked();
-        void OnSettingsClicked();
-        void OnQuitClicked();
+        // Initialization
+        void Initialize();
+        
+        // Command Methods
+        void StartNewGame();
+        void LoadGame();
+        void OpenSettings();
+        void QuitGame();
     }
 }
