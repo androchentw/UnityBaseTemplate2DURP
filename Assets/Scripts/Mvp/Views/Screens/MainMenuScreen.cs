@@ -11,6 +11,7 @@ namespace Mvp.Views.Screens
     {
         // UI Elements
         private UIDocument _uiDocument;
+        private Label _versionLabel;
         private Label _clickedButtonInfo;
         private Button _newGameButton;
         private Button _loadGameButton;
@@ -63,6 +64,7 @@ namespace Mvp.Views.Screens
             }
 
             // Query UI elements
+            _versionLabel = root.Q<Label>("version-label");
             _clickedButtonInfo = root.Q<Label>("clicked-button-info");
             _newGameButton = root.Q<Button>("new-game-button");
             _loadGameButton = root.Q<Button>("load-game-button");
@@ -77,6 +79,7 @@ namespace Mvp.Views.Screens
 
             // Initial UI state
             UpdateClickedButtonInfo("None");
+            UpdateVersionText();
             
             FhLog.I($"{nameof(MainMenuScreen)} initialized");
         }
@@ -92,6 +95,19 @@ namespace Mvp.Views.Screens
             {
                 FhLog.E("Button not found in UXML.", this);
             }
+        }
+
+        private void UpdateVersionText()
+        {
+            if (_versionLabel == null)
+                return;
+                
+            const string version = "0.1.0";
+            string buildTimestamp = DateTime.Now.ToString("yyyyMMdd.HHmm");
+            string versionText = $"v{version}-{buildTimestamp}";
+            
+            _versionLabel.text = versionText;
+            FhLog.I($"Version: {versionText}");
         }
 
         #region IMainMenuView Implementation
