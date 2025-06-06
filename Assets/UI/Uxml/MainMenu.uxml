@@ -2,32 +2,38 @@
          editor-extension-mode="False">
   <Style
     src="project://database/Assets/UI/Uss/GameHome.uss?fileID=7433441132597879392&amp;guid=faaf1ce49bd1bbe44b47ebf1736d4344&amp;type=3#GameHome" />
-  <ui:VisualElement name="root" class="main-container">
+  <ui:VisualElement name="root" class="main-container"
+                    style="background-image: url('/Assets/Art/UI/bg-mainmenu.jpg'); 
+                    background-size: cover; background-position: center;">
     <!-- Left Side -->
     <ui:VisualElement class="left-panel">
       <ui:VisualElement name="button-container" class="button-group">
 
         <ui:Button name="new-game-button" class="menu-button">
           <Bindings>
-            <UnityEngine.Localization.LocalizedString property="text" table="GUID:123d4425c7b74864caa93e0cf6a58939"
+            <UnityEngine.Localization.LocalizedString property="text"
+                                                      table="GUID:123d4425c7b74864caa93e0cf6a58939"
                                                       entry="Id(3912935403520)" />
           </Bindings>
         </ui:Button>
         <ui:Button name="load-game-button" class="menu-button">
           <Bindings>
-            <UnityEngine.Localization.LocalizedString property="text" table="GUID:123d4425c7b74864caa93e0cf6a58939"
+            <UnityEngine.Localization.LocalizedString property="text"
+                                                      table="GUID:123d4425c7b74864caa93e0cf6a58939"
                                                       entry="Id(4173821112320)" />
           </Bindings>
         </ui:Button>
         <ui:Button name="settings-button" class="menu-button">
           <Bindings>
-            <UnityEngine.Localization.LocalizedString property="text" table="GUID:123d4425c7b74864caa93e0cf6a58939"
+            <UnityEngine.Localization.LocalizedString property="text"
+                                                      table="GUID:123d4425c7b74864caa93e0cf6a58939"
                                                       entry="Id(389048954880)" />
           </Bindings>
         </ui:Button>
         <ui:Button name="quit-button" class="menu-button">
           <Bindings>
-            <UnityEngine.Localization.LocalizedString property="text" table="GUID:123d4425c7b74864caa93e0cf6a58939"
+            <UnityEngine.Localization.LocalizedString property="text" 
+                                                      table="GUID:123d4425c7b74864caa93e0cf6a58939"
                                                       entry="Id(421026328576)" />
           </Bindings>
         </ui:Button>
