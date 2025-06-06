@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using Utils;
 using Mvp.Presenters;
+using Resources.Config;
 
 namespace Mvp.Views.Screens
 {
@@ -102,12 +103,23 @@ namespace Mvp.Views.Screens
             if (_versionLabel == null)
                 return;
                 
-            const string version = "0.1.0";
-            string buildTimestamp = DateTime.Now.ToString("yyyyMMdd.HHmm");
-            string versionText = $"v{version}-{buildTimestamp}";
+            var config = EnvironmentManager.Config;
+            if (!config)
+            {
+                FhLog.E("EnvironmentConfig not found!");
+                _versionLabel.text = "v0.0.0-unknown";
+                return;
+            }
             
+            string versionText = config.FullVersion;
             _versionLabel.text = versionText;
-            FhLog.I($"Version: {versionText}");
+            
+            if (config.IsDevelopment)
+            {  
+                _versionLabel.text += " (Development)";
+            }
+            
+            FhLog.I($"Version: {versionText} | Environment: {config.EnvironmentName}");
         }
 
         #region IMainMenuView Implementation
