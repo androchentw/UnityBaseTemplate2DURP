@@ -1,7 +1,6 @@
 namespace UI.Utils
 {
-    public static class TextStyles
-    {
-    
-    }
+  public static class TextStyles
+  {
+  }
 }
