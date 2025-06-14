@@ -33,75 +33,75 @@ namespace Mvp.Presenters
 
     public void StartNewGame()
     {
-        if (!_isInitialized) return;
+      if (!_isInitialized) return;
 
-        // Ensure SaveManager exists
-        SaveManager.EnsureExists();
-        
-        // Generate a simple ID for the player
-        string playerId = Guid.NewGuid().ToString().Substring(0, 8);
-        string playerName = $"Player_{playerId}";
-        
-        if (SaveManager.Instance && SaveManager.Instance.SaveGame(playerName, playerId))
-        {
-            string message = $"New Player: {playerName}\nID: {playerId}";
-            _view.ShowMessage(message);
-            _view.UpdateClickedButtonInfo(message);
-            
-            // Here you would typically load the game scene
-            // SceneManager.LoadScene("GameScene");
-        }
-        else
-        {
-            const string error = "Failed to create new game save";
-            _view.ShowMessage(error);
-            FhLog.E(error);
-        }
+      // Ensure SaveManager exists
+      SaveManager.EnsureExists();
+
+      // Generate a simple ID for the player
+      string playerId = Guid.NewGuid().ToString().Substring(0, 8);
+      string playerName = $"Player_{playerId}";
+
+      if (SaveManager.Instance && SaveManager.Instance.SaveGame(playerName, playerId))
+      {
+        string message = $"New Player: {playerName}\nID: {playerId}";
+        _view.ShowMessage(message);
+        _view.UpdateClickedButtonInfo(message);
+
+        // Here you would typically load the game scene
+        // SceneManager.LoadScene("GameScene");
+      }
+      else
+      {
+        const string error = "Failed to create new game save";
+        _view.ShowMessage(error);
+        FhLog.E(error);
+      }
     }
 
     public void LoadGame()
     {
-        if (!_isInitialized) return;
-        
-        // Ensure SaveManager exists
-        SaveManager.EnsureExists();
-        
-        if (!SaveManager.Instance)
-        {
-            _view.ShowMessage("Failed to initialize save system");
-            return;
-        }
-        
-        var saveFiles = SaveManager.Instance.GetAllSaveFiles();
-        if (saveFiles.Count == 0)
-        {
-            string message = "No save files found";
-            _view.ShowMessage(message);
-            _view.UpdateClickedButtonInfo("No Saves Available");
-            FhLog.I(message);
-            return;
-        }
-        
-        // Try to load the most recent save
-        string latestSave = saveFiles.FirstOrDefault();
-        if (SaveManager.Instance.LoadGame(latestSave))
-        {
-            var saveData = SaveManager.Instance.CurrentSaveData;
-            string message = $"Game loaded!\nPlayer: {saveData.playerName}\nSaved: {saveData.SaveTime}";
-            _view.ShowMessage(message);
-            _view.UpdateClickedButtonInfo($"Loaded: {saveData.playerName}");
-            FhLog.I(message);
-            
-            // Here you would typically load the game scene with the loaded data
-            // SceneManager.LoadScene("GameScene");
-        }
-        else
-        {
-            string error = "Failed to load game save";
-            _view.ShowMessage(error);
-            _view.UpdateClickedButtonInfo("Load Failed");
-            FhLog.E(error);
-        }
+      if (!_isInitialized) return;
+
+      // Ensure SaveManager exists
+      SaveManager.EnsureExists();
+
+      if (!SaveManager.Instance)
+      {
+        _view.ShowMessage("Failed to initialize save system");
+        return;
+      }
+
+      var saveFiles = SaveManager.Instance.GetAllSaveFiles();
+      if (saveFiles.Count == 0)
+      {
+        string message = "No save files found";
+        _view.ShowMessage(message);
+        _view.UpdateClickedButtonInfo("No Saves Available");
+        FhLog.I(message);
+        return;
+      }
+
+      // Try to load the most recent save
+      string latestSave = saveFiles.FirstOrDefault();
+      if (SaveManager.Instance.LoadGame(latestSave))
+      {
+        var saveData = SaveManager.Instance.CurrentSaveData;
+        string message = $"Game loaded!\nPlayer: {saveData.playerName}\nSaved: {saveData.SaveTime}";
+        _view.ShowMessage(message);
+        _view.UpdateClickedButtonInfo($"Loaded: {saveData.playerName}");
+        FhLog.I(message);
+
+        // Here you would typically load the game scene with the loaded data
+        // SceneManager.LoadScene("GameScene");
+      }
+      else
+      {
+        string error = "Failed to load game save";
+        _view.ShowMessage(error);
+        _view.UpdateClickedButtonInfo("Load Failed");
+        FhLog.E(error);
+      }
     }
 
     public void OpenSettings()
